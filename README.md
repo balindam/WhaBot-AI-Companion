@@ -12,6 +12,6 @@ Interact seamlessly with OpenAI through WhatsApp, enabling prompt-based conversa
 
 ## Task list
 
-- [ ] Add husky for pre-commits
+- [X] Add husky for pre-commits
 - [ ] Add prettier
 - [ ] Add commitlint for commit-messages standards
