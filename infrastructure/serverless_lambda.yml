@@ -1,0 +1,26 @@
+service: whabot-ai-companion-function
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: prod
+  region: ap-south-1
+
+functions:
+  whabot-ai-companion:
+    handler: src/app.handler
+    events:
+      - http: 
+          path: /webhook
+          method: POST
+          cors: true
+    layers: 
+      - arn:aws:lambda:ap-south-1:776723440099:layer:NodejsDependenciesLayer:1
+
+package:
+  individually: true
+  excludeDevDependencies: true
+  include: 
+    - ../src/**
+  exclude
+    - ../nodejs_layer

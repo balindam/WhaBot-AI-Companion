@@ -4,12 +4,15 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "nodemon": "^3.0.2",
-    "prettier": "^3.1.1"
+    "prettier": "^3.1.1",
+    "serverless-offline": "^13.3.2"
   },
   "scripts": {
     "prepare": "husky install",
     "start": "node app.js",
-    "serve": "nodemon server.js"
+    "serve": "nodemon server.js",
+    "install-layer-deps": "yarn --modules-folder nodejs_layer/node_modules"
+
   },
   "husky": {
     "hooks": {
@@ -21,6 +24,7 @@
     "@commitlint/config-conventional": "^18.4.3",
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
+    "serverless-http": "^3.2.0",
     "yarn": "^1.22.21"
   },
   "type": "module"
