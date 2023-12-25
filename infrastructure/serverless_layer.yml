@@ -8,7 +8,7 @@ provider:
     
 layers:
   NodejsDependenciesLayer:
-    path: ../nodejs_layer/node_modules # Path to your layer content
+    path: ../nodejs_layer # Path to your layer content
     compatibleRuntimes:
       - nodejs18.x
 
@@ -16,8 +16,3 @@ package:
   individually: true
   include: 
     - ../nodejs_layer/**
-
-custom:
-  scriptHooks:
-    after:deploy:finalize:
-      - serverless deploy --config serverless_lambda.yml

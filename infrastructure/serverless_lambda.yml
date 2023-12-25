@@ -22,5 +22,5 @@ package:
   excludeDevDependencies: true
   include: 
     - ../src/**
-  exclude
+  exclude:
     - ../nodejs_layer
