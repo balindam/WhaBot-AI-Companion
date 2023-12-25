@@ -14,8 +14,12 @@ functions:
           path: /webhook
           method: POST
           cors: true
+      - http: 
+          path: /webhook
+          method: GET
+          cors: true
     layers: 
-      - arn:aws:lambda:ap-south-1:776723440099:layer:NodejsDependenciesLayer:1
+      - arn:aws:lambda:ap-south-1:776723440099:layer:NodejsDependenciesLayer:2
 
 package:
   individually: true
