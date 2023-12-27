@@ -1,4 +1,4 @@
-import { GRAPH_FB_VERSION, WHATSAPP_SEND_MESSAGE_URL } from "../constants.js";
+import { WHATSAPP_SEND_MESSAGE_URL } from "../constants.js";
 import { Message } from "../model/model.js";
 import axios from 'axios';
 
