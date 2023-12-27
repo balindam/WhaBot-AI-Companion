@@ -12,7 +12,6 @@
     "start": "node app.js",
     "serve": "nodemon server.js",
     "install-layer-deps": "yarn --modules-folder nodejs_layer/node_modules"
-
   },
   "husky": {
     "hooks": {
@@ -22,6 +21,7 @@
   "dependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
+    "axios": "^1.6.3",
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
     "serverless-http": "^3.2.0",

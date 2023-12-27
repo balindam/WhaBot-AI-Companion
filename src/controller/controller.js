@@ -13,18 +13,35 @@ export class WebhookController {
         const challenge = req.query["hub.challenge"];
         const token = req.query["hub.verify_token"];
 
-        if(mode === 'subscribe' && token === process.env.WHATSAPP_CLOUD_API_CALLBACK_URL_TOKEN) {
+        if(this.WebhookService.verifyWebhookURLToken(mode, token)) {
             res.status(200).send(challenge);
         } else {
-            res.status(403);
+            res.send(403);
         }
     }
 
     processWebhook(req, res) {
         // TODO: check which webhook is incoming and then process (switch-case)
-        const data = req.body;
-        const processedData = this.WebhookService.processWebhookData(data);
+        const webhookNotificationPayload = req.body;
+        const field = webhookNotificationPayload?.entry?.changes?.field;
 
+        switch(field) {
+            case "messages":
+                const messages = webhookNotificationPayload?.entry?.changes?.values?.messages;
+                messages.forEach(message => {
+                    if(message?.type === 'text') {
+                        const messageContent = message.text.body;
+                        const fromPhoneNumber = message.from;
+                        this.WebhookService.sendMessageToUser(fromPhoneNumber, 'text', messageContent);
+                    }
+                })
+                break;
+            case "unknown": 
+                break;
+            default:
+                break;
+        }
+        
         res.status(200).json(processedData);
     }
 }
