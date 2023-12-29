@@ -1,6 +1,5 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import ServerlessHttp from 'serverless-http';
 import { WebhookController } from './controller/controller.js';
 
 const app = express();
