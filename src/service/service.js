@@ -8,6 +8,7 @@ export class WebhookService {
         this.openai = new OpenAI({
             apiKey: process.env.OPENAI_API_KEY // This is also the default, can be omitted
         });
+        this.chatContextList = [];
     }
 
     processWebhookData(data) {
@@ -36,13 +37,40 @@ export class WebhookService {
     
     async askOpenAI(question) {
         try {
+            // add the prompt to the chat context
+            this.chatContextList.push({
+                "role": "user",
+                "content": question
+            })
+
+            // without using streams
             const completion = await this.openai.chat.completions.create({
                 model: "gpt-3.5-turbo-1106",
                 messages: [
-                    {"role": "user", "content": question}
+                    ...this.chatContextList,
                 ]
             });
+            this.chatContextList.push({
+                "role": "assistant",
+                "content":  completion.choices[0].message.content
+            })
             return completion.choices[0].message.content;
+
+            // using streams
+            /*
+            const stream = await this.openai.chat.completions.create({
+                model: "gpt-3.5-turbo-1106",
+                messages: [
+                    {"role": "user", "content": question}
+                ],
+                stream: true,
+            });
+            let reply = "";
+            for await (const chunk of stream) {
+                reply += chunk.choices[0]?.delta?.content || "";
+            }
+            return reply;
+            */
         } catch (error) {
             console.error('Error asking OpenAI:', error);
             throw new Error('Failed to get response from OpenAI');
