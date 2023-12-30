@@ -26,17 +26,20 @@ To set up and deploy the WhaBot AI Companion, follow these steps:
 
 ## Directory Structure
 
+```
 WhaBot-AI-Companion/
 │
 ├── src/
-│ ├── lambdaFunction.js # Main Lambda function handling WhatsApp requests and OpenAI integration
-│ ├── openaiService.js # Service for interacting with OpenAI API
-│ └── ... # Other relevant files
+│   ├── lambdaFunction.js      # Main Lambda function handling WhatsApp requests and OpenAI integration
+│   ├── openaiService.js       # Service for interacting with OpenAI API
+│   └── ...                    # Other relevant files
 │
-├── serverless.yml # Serverless framework configuration for AWS Lambda and API Gateway
-├── package.json # Node.js dependencies and scripts
-├── .env.example # Example environment variables configuration
-└── README.md # Project documentation
+├── serverless.yml             # Serverless framework configuration for AWS Lambda and API Gateway
+├── package.json               # Node.js dependencies and scripts
+├── .env.example               # Example environment variables configuration
+└── README.md                  # Project documentation
+
+```
 
 ## Contributing
 
